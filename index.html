@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Javiera Vásquez · Psicóloga · Santiago</title>
+<meta name="description" content="Psicóloga psicodinámica en Santiago. Integro neuropsicología y arte para acompañar procesos de autoconocimiento, transición y cambio. Universidad Gabriela Mistral.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ── Tokens ──────────────────────────────────────────────── */
+:root {
+  --w:     #FFFFFF;
+  --off:   #F5F0E8;
+  --k:     #0F0F0E;
+  --gray:  #3A3A38;
+  --taupe: #8B7355;
+  --tan:   #C4A882;
+  --sage:  #5A7D6F;
+  --slt:   #C8DAD4;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans:  'Inter', system-ui, sans-serif;
+  --pad:   clamp(2rem, 5vw, 5rem);
+  --max:   1440px;
+  --ease:  cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur:   0.55s;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--w);
+  color: var(--k);
+  font-family: var(--sans);
+  font-size: clamp(0.9rem, 1.1vw, 1rem);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* ── Animations ──────────────────────────────────────────── */
+.fu {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.fu.on { opacity: 1; transform: none; }
+.fu:nth-child(2) { transition-delay: 0.09s; }
+.fu:nth-child(3) { transition-delay: 0.18s; }
+.fu:nth-child(4) { transition-delay: 0.27s; }
+.fu:nth-child(5) { transition-delay: 0.36s; }
+
+/* ── Buttons ─────────────────────────────────────────────── */
+.btn {
+  display: inline-block;
+  background: var(--k);
+  color: var(--w);
+  padding: 0.85em 2.2em;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 100px;
+  transition: background 0.22s, color 0.22s;
+  cursor: pointer;
+}
+.btn:hover { background: var(--taupe); }
+.btn-w {
+  display: inline-block;
+  background: var(--w);
+  color: var(--k);
+  padding: 0.85em 2.2em;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 100px;
+  transition: background 0.22s, color 0.22s;
+  cursor: pointer;
+}
+.btn-w:hover { background: var(--tan); }
+.btn-ol {
+  display: inline-block;
+  border: 1.5px solid var(--k);
+  color: var(--k);
+  padding: 0.85em 2.2em;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 100px;
+  transition: background 0.22s, color 0.22s;
+}
+.btn-ol:hover { background: var(--k); color: var(--w); }
+
+/* ── Section label ───────────────────────────────────────── */
+.lbl {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  margin-bottom: 1.75rem;
+}
+.lbl::before {
+  content: '';
+  display: inline-block;
+  width: 2rem;
+  height: 1px;
+  background: var(--taupe);
+  flex-shrink: 0;
+}
+.lbl-tan { color: var(--tan); }
+.lbl-tan::before { background: var(--tan); }
+
+/* ── Navigation ──────────────────────────────────────────── */
+#nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.5rem var(--pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  transition: background 0.3s, backdrop-filter 0.3s, border-bottom 0.3s;
+}
+#nav.s {
+  background: rgba(255,255,255,0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.nav-brand {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.nav-links a { opacity: 0.55; transition: opacity 0.2s; }
+.nav-links a:hover { opacity: 1; }
+
+/* ── Hero ────────────────────────────────────────────────── */
+#hero {
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  min-height: 100dvh;
+}
+.hero-photo {
+  position: relative;
+  min-height: 55vh;
+  overflow: hidden;
+}
+.hero-ph {
+  position: absolute; inset: 0;
+  /* Place: warm portrait of Javiera, natural light */
+  background: linear-gradient(168deg, #2A2320 0%, #4A3B2B 50%, #332820 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem;
+  font-size: 0.62rem;
+  font-family: var(--sans);
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8rem var(--pad) 5rem calc(var(--pad) * 0.75);
+  gap: 2.5rem;
+}
+.hero-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+.hero-name {
+  font-family: var(--serif);
+  font-size: clamp(4.5rem, 7.5vw, 8rem);
+  font-weight: 300;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+.hero-name em {
+  display: block;
+  font-style: italic;
+  color: var(--taupe);
+  font-weight: 400;
+}
+.hero-promise {
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 1.65vw, 1.4rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--gray);
+  max-width: 34ch;
+  border-left: 2px solid var(--tan);
+  padding-left: 1.25rem;
+}
+.hero-scroll {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.hero-scroll::before {
+  content: '';
+  display: inline-block;
+  width: 2rem;
+  height: 1px;
+  background: var(--taupe);
+}
+
+/* ── Credentials ─────────────────────────────────────────── */
+#creds {
+  background: var(--k);
+  padding: 1.5rem var(--pad);
+}
+.creds-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+  row-gap: 0.5rem;
+}
+.cred-item {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tan);
+  padding: 0 2rem 0 0;
+  position: relative;
+}
+.cred-item:not(:last-child)::after {
+  content: '/';
+  position: absolute;
+  right: 0.75rem;
+  color: rgba(196,168,130,0.35);
+  font-weight: 300;
+}
+
+/* ── Intro ───────────────────────────────────────────────── */
+#intro {
+  padding: clamp(6rem, 11vw, 10rem) var(--pad);
+}
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(4rem, 7vw, 7rem);
+  align-items: center;
+}
+.intro-heading {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 4.5vw, 5rem);
+  font-weight: 500;
+  line-height: 1.02;
+  margin-bottom: 1.75rem;
+}
+.intro-heading em { font-style: italic; color: var(--taupe); font-weight: 400; }
+.intro-body {
+  font-size: 1rem;
+  line-height: 1.82;
+  color: var(--gray);
+  max-width: 48ch;
+  margin-bottom: 1.25rem;
+}
+.intro-photo {
+  height: clamp(480px, 60vw, 650px);
+  overflow: hidden;
+  position: relative;
+}
+.intro-photo .mph {
+  position: absolute; inset: 0;
+  /* Place: Javiera working, reading, or in consultation space */
+  background: linear-gradient(152deg, #3D5048 0%, #2A3630 55%, #1E2822 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 1.5rem;
+  font-size: 0.62rem;
+  font-family: var(--sans);
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── Para ti si ──────────────────────────────────────────── */
+#paratiSi {
+  background: var(--off);
+  padding: clamp(6rem, 11vw, 10rem) var(--pad);
+}
+.parati-heading {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 4.5vw, 5rem);
+  font-weight: 500;
+  line-height: 1.02;
+  margin-bottom: clamp(3.5rem, 6vw, 6rem);
+  max-width: 24ch;
+}
+.parati-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid rgba(0,0,0,0.12);
+}
+.parati-card {
+  padding: 3rem 2.5rem 3rem 0;
+  border-right: 1px solid rgba(0,0,0,0.12);
+}
+.parati-card:first-child { padding-left: 0; }
+.parati-card:nth-child(n+2) { padding-left: 2rem; }
+.parati-card:last-child { border-right: none; padding-right: 0; }
+.parati-num {
+  font-family: var(--serif);
+  font-size: clamp(4.5rem, 7vw, 7.5rem);
+  font-weight: 300;
+  color: rgba(0,0,0,0.05);
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.03em;
+  user-select: none;
+}
+.parati-card h3 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+.parati-card p {
+  font-size: 0.9rem;
+  line-height: 1.82;
+  color: var(--gray);
+}
+
+/* ── Diferenciador ───────────────────────────────────────── */
+#diferenciador {
+  padding: clamp(6rem, 11vw, 10rem) var(--pad);
+}
+.diff-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(4rem, 7vw, 7rem);
+  align-items: start;
+}
+.diff-left { position: sticky; top: 7rem; }
+.diff-heading {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 4vw, 4.5rem);
+  font-weight: 500;
+  line-height: 1.02;
+  margin-bottom: 3rem;
+}
+.diff-photo {
+  height: clamp(480px, 60vw, 650px);
+  overflow: hidden;
+  position: relative;
+}
+.diff-photo .mph {
+  position: absolute; inset: 0;
+  /* Place: art materials, books, or contemplative texture */
+  background: linear-gradient(158deg, #2C2A26 0%, #4A4035 50%, #3A3028 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 1.5rem;
+  font-size: 0.62rem;
+  font-family: var(--sans);
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.diff-pillars {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+.pillar {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: 1.5rem;
+  padding: 2.25rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  align-items: start;
+}
+.pillar-n {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--taupe);
+  letter-spacing: 0.05em;
+  padding-top: 0.25rem;
+}
+.pillar h4 {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  line-height: 1.2;
+}
+.pillar p {
+  font-size: 0.9rem;
+  line-height: 1.82;
+  color: var(--gray);
+}
+
+/* ── Testimonios ─────────────────────────────────────────── */
+#testimonios {
+  background: var(--k);
+  color: var(--w);
+  padding: clamp(6rem, 11vw, 10rem) var(--pad);
+}
+.testi-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  flex-wrap: wrap;
+}
+.testi-heading {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 4.5vw, 5rem);
+  font-weight: 500;
+  line-height: 1.02;
+  max-width: 28ch;
+}
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 3.5rem;
+}
+.testi-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.testi-quote {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.68;
+  color: rgba(255,255,255,0.85);
+  flex: 1;
+}
+.testi-attr {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.testi-init {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--tan);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  color: var(--tan);
+  flex-shrink: 0;
+}
+.testi-name { font-size: 0.73rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--tan); }
+.testi-detail { font-size: 0.68rem; color: rgba(255,255,255,0.3); margin-top: 0.15rem; }
+
+/* ── Espacio ─────────────────────────────────────────────── */
+#espacio {
+  padding: clamp(6rem, 11vw, 10rem) var(--pad);
+}
+.espacio-strip {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 1rem;
+  height: 62vh;
+  min-height: 360px;
+  margin-top: 3rem;
+}
+.ep {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.ep-bg {
+  position: absolute; inset: 0;
+  transition: transform 0.65s var(--ease);
+}
+.ep:hover .ep-bg { transform: scale(1.05); }
+.ep-1 .ep-bg { background: linear-gradient(168deg, #3A2D22 0%, #6A5040 100%); }
+.ep-2 .ep-bg { background: linear-gradient(155deg, #2A3830 0%, #4A5D50 100%); }
+.ep-3 .ep-bg { background: linear-gradient(160deg, #2A2820 0%, #4A4530 100%); }
+.ep-label {
+  position: absolute; bottom: 1.5rem; left: 1.25rem;
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  opacity: 0; transition: opacity 0.3s;
+}
+.ep:hover .ep-label { opacity: 1; }
+
+/* ── Blog ────────────────────────────────────────────────── */
+#blog {
+  background: var(--off);
+  padding: clamp(6rem, 11vw, 10rem) var(--pad);
+}
+.blog-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+  flex-wrap: wrap;
+}
+.blog-heading {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 4.5vw, 5rem);
+  font-weight: 500;
+  line-height: 1.02;
+}
+.blog-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 2.5rem;
+}
+.blog-card { cursor: pointer; }
+.blog-img {
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.blog-bg {
+  width: 100%; height: 300px;
+  transition: transform 0.65s var(--ease);
+}
+.blog-card.feat .blog-bg { height: 460px; }
+.blog-card:hover .blog-bg { transform: scale(1.04); }
+.bg1 { background: linear-gradient(158deg, #3D5048 0%, #2C3830 100%); }
+.bg2 { background: linear-gradient(158deg, #2C2A26 0%, #4A4035 100%); }
+.bg3 { background: linear-gradient(158deg, #3A2822 0%, #5A3D2D 100%); }
+.blog-cat {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--sage); margin-bottom: 0.75rem;
+}
+.blog-title {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.18;
+  margin-bottom: 0.75rem;
+  transition: color 0.2s;
+}
+.blog-card.feat .blog-title { font-size: 2.2rem; }
+.blog-card:hover .blog-title { color: var(--taupe); }
+.blog-excerpt { font-size: 0.88rem; line-height: 1.78; color: var(--gray); margin-bottom: 1rem; }
+.blog-date { font-size: 0.68rem; color: var(--taupe); letter-spacing: 0.05em; }
+
+/* ── CTA ─────────────────────────────────────────────────── */
+#cta-final {
+  background: var(--k);
+  color: var(--w);
+  padding: clamp(7rem, 13vw, 12rem) var(--pad);
+  text-align: center;
+}
+.cta-h {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 5.5vw, 6.5rem);
+  font-weight: 400;
+  line-height: 1.0;
+  max-width: 20ch;
+  margin: 0 auto 2rem;
+}
+.cta-h em { font-style: italic; color: var(--tan); }
+.cta-sub {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.5);
+  max-width: 44ch;
+  margin: 0 auto 3rem;
+  line-height: 1.75;
+}
+
+/* ── Footer ──────────────────────────────────────────────── */
+#footer {
+  background: var(--k);
+  color: var(--w);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 4.5rem var(--pad) 2rem;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 4rem;
+}
+.footer-brand {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+.footer-tag {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.7;
+  max-width: 28ch;
+  margin-bottom: 1.5rem;
+}
+.footer-contact { font-size: 0.78rem; color: var(--tan); line-height: 1.9; }
+.footer-col-t {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--tan); margin-bottom: 1.5rem;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+.footer-links a { font-size: 0.85rem; color: rgba(255,255,255,0.45); transition: color 0.2s; }
+.footer-links a:hover { color: var(--w); }
+.footer-bar {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 1.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 0.5rem;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.22);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 1080px) {
+  #hero { grid-template-columns: 1fr; }
+  .hero-photo { min-height: 65vw; }
+  .intro-grid, .diff-grid { grid-template-columns: 1fr; }
+  .intro-photo, .diff-photo { height: 55vw; min-height: 300px; }
+  .diff-left { position: static; }
+  .parati-grid { grid-template-columns: 1fr; border-top: none; }
+  .parati-card { border-right: none; border-top: 1px solid rgba(0,0,0,0.12); padding: 2.5rem 0; }
+  .parati-card:nth-child(n+2) { padding-left: 0; }
+  .parati-card:last-child { padding-right: 0; }
+  .testi-grid { grid-template-columns: 1fr 1fr; }
+  .testi-grid .testi-card:last-child { display: none; }
+  .espacio-strip { grid-template-columns: 1fr 1fr; height: auto; }
+  .ep-1 { grid-column: 1 / -1; height: 50vw; }
+  .ep-2, .ep-3 { height: 28vw; }
+  .blog-grid { grid-template-columns: 1fr 1fr; }
+  .blog-card.feat { grid-column: 1 / -1; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid > *:first-child { grid-column: 1 / -1; }
+}
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .parati-num { font-size: 4rem; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .testi-grid .testi-card:last-child { display: flex; }
+  .espacio-strip { grid-template-columns: 1fr; }
+  .ep-1, .ep-2, .ep-3 { height: 60vw; grid-column: auto; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .blog-card.feat { grid-column: auto; }
+  .blog-top { flex-direction: column; align-items: flex-start; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .footer-grid > *:first-child { grid-column: auto; }
+  .testi-top { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ Nav ═══════════════════════════════════════════════════ -->
+<nav id="nav">
+  <a href="#" class="nav-brand">Javiera Vásquez</a>
+  <ul class="nav-links">
+    <li><a href="#paratiSi">Para ti</a></li>
+    <li><a href="#diferenciador">Enfoque</a></li>
+    <li><a href="#testimonios">Experiencias</a></li>
+    <li><a href="#espacio">El espacio</a></li>
+    <li><a href="#blog">Artículos</a></li>
+  </ul>
+  <!-- Replace 56900000000 with real WhatsApp -->
+  <a href="https://wa.me/56900000000?text=Hola%20Javiera%2C%20me%20gustar%C3%ADa%20agendar%20una%20primera%20conversaci%C3%B3n"
+     target="_blank" rel="noopener" class="btn">Agenda</a>
+</nav>
+
+
+<!-- ══ Hero ══════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-photo">
+    <!-- Place: warm portrait, natural light, slightly artistic crop -->
+    <div class="hero-ph">foto · retrato cálido · luz natural</div>
+  </div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow fu">Psicóloga · Santiago, Chile</p>
+    <h1 class="hero-name fu">
+      Javiera<br>
+      <em>Vásquez</em>
+    </h1>
+    <p class="hero-promise fu">
+      Una mirada profunda y humana de lo que eres,<br>
+      de lo que repites, y de lo que quieres transformar.
+    </p>
+    <div class="fu">
+      <a href="https://wa.me/56900000000?text=Hola%20Javiera%2C%20me%20gustar%C3%ADa%20agendar%20una%20primera%20conversaci%C3%B3n"
+         target="_blank" rel="noopener" class="btn">
+        Agenda una primera conversación
+      </a>
+    </div>
+    <span class="hero-scroll fu">Sigue leyendo</span>
+  </div>
+</section>
+
+
+<!-- ══ Credentials ════════════════════════════════════════════ -->
+<div id="creds">
+  <div class="creds-inner">
+    <span class="cred-item">Psicóloga</span>
+    <span class="cred-item">Enfoque psicodinámico</span>
+    <span class="cred-item">Neuropsicología</span>
+    <span class="cred-item">Arte y Psique</span>
+    <span class="cred-item">Univ. Gabriela Mistral</span>
+    <span class="cred-item">Presencial y Online</span>
+  </div>
+</div>
+
+
+<!-- ══ Intro ══════════════════════════════════════════════════ -->
+<section id="intro">
+  <div style="max-width:var(--max);margin:0 auto;">
+    <div class="intro-grid">
+      <div>
+        <p class="lbl fu">Sobre el trabajo</p>
+        <h2 class="intro-heading fu">
+          Ir <em>más hondo</em><br>que el síntoma
+        </h2>
+        <p class="intro-body fu">
+          Hay algo que no termina de encajar. Un patrón que se repite. Una sensación
+          difusa que no tiene nombre claro todavía. En ese territorio me muevo: no en
+          la superficie de lo que pasa, sino en las capas más profundas de por qué pasa
+          y qué significa para ti.
+        </p>
+        <p class="intro-body fu">
+          Trabajo desde el enfoque psicodinámico, integrando herramientas de
+          neuropsicología y del lenguaje del arte. Es una forma de mirar que te
+          incluye completa, no solo la parte que duele.
+        </p>
+        <div class="fu" style="margin-top:0.5rem;">
+          <a href="https://wa.me/56900000000" target="_blank" rel="noopener" class="btn-ol">
+            Cuéntame qué te trae
+          </a>
+        </div>
+      </div>
+
+      <div class="intro-photo fu">
+        <!-- Place: Javiera in her space, warm atmosphere -->
+        <div class="mph">foto · javiera en su espacio · luz cálida</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ Para ti si ═════════════════════════════════════════════ -->
+<section id="paratiSi">
+  <div style="max-width:var(--max);margin:0 auto;">
+    <div class="fu">
+      <p class="lbl">Para quién</p>
+      <h2 class="parati-heading">
+        Este trabajo<br>es para ti si...
+      </h2>
+    </div>
+    <div class="parati-grid">
+      <div class="parati-card fu">
+        <div class="parati-num">I.</div>
+        <h3>Sientes que algo no encaja</h3>
+        <p>
+          Funcionas, cumples, llevas adelante tu vida. Pero hay una sensación persistente
+          de que algo está fuera de lugar y no sabes exactamente qué. Quieres entender
+          de dónde viene eso.
+        </p>
+      </div>
+      <div class="parati-card fu">
+        <div class="parati-num">II.</div>
+        <h3>Estás en una transición vital</h3>
+        <p>
+          Un cambio de carrera, una relación que termina, una etapa que cierra. Las
+          transiciones movilizan mucho más de lo visible. Buscar apoyo en ese momento
+          no es debilidad, es inteligencia emocional.
+        </p>
+      </div>
+      <div class="parati-card fu">
+        <div class="parati-num">III.</div>
+        <h3>Repites patrones que no entiendes</h3>
+        <p>
+          Las mismas peleas, las mismas elecciones, la misma sensación una y otra vez.
+          Los patrones tienen historia. Comprenderla es lo que los hace posible de
+          transformar.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ Diferenciador ══════════════════════════════════════════ -->
+<section id="diferenciador">
+  <div style="max-width:var(--max);margin:0 auto;">
+    <div class="diff-grid">
+      <div class="diff-left">
+        <p class="lbl fu">Mi enfoque</p>
+        <h2 class="diff-heading fu">
+          Tres lentes para<br>una sola persona
+        </h2>
+        <div class="diff-pillars">
+          <div class="pillar fu">
+            <span class="pillar-n">01</span>
+            <div>
+              <h4>Psicodinámico</h4>
+              <p>
+                Trabajo con lo que viene del pasado y opera hoy, muchas veces sin que lo
+                notes. El inconsciente no es un concepto abstracto: es lo que te hace
+                elegir lo que eliges.
+              </p>
+            </div>
+          </div>
+          <div class="pillar fu">
+            <span class="pillar-n">02</span>
+            <div>
+              <h4>Neuropsicología</h4>
+              <p>
+                Entender cómo funciona el cerebro en el estrés, el duelo o la toma de
+                decisiones no es tecnicismo: es información que te devuelve agencia sobre
+                tu propio sistema nervioso.
+              </p>
+            </div>
+          </div>
+          <div class="pillar fu">
+            <span class="pillar-n">03</span>
+            <div>
+              <h4>Arte y Psique</h4>
+              <p>
+                Hay cosas que no caben en palabras. El arte y la imagen abren un canal
+                distinto hacia lo que necesitas ver. No es terapia de arte: es usar el
+                lenguaje visual como otra forma de conocerte.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="diff-photo fu">
+        <!-- Place: art materials, books, or contemplative evocative texture -->
+        <div class="mph">foto evocadora · materiales, libros · luz íntima</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ Testimonios ════════════════════════════════════════════ -->
+<section id="testimonios">
+  <div style="max-width:var(--max);margin:0 auto;">
+    <div class="testi-top fu">
+      <h2 class="testi-heading">Lo que dicen quienes han pasado por aquí</h2>
+      <p class="lbl lbl-tan" style="margin-bottom:0;">Experiencias</p>
+    </div>
+    <div class="testi-grid">
+      <!-- PLACEHOLDER: replace with real testimonials, consented and anonymized -->
+      <div class="testi-card fu">
+        <p class="testi-quote">
+          "Llevaba años sintiéndome atascada sin saber por qué. Con Javiera entendí
+          que no era falta de voluntad. Fue la primera vez que alguien me ayudó a ver
+          el patrón completo, no solo el síntoma de turno."
+        </p>
+        <div class="testi-attr">
+          <div class="testi-init">C.M.</div>
+          <div>
+            <p class="testi-name">C.M.</p>
+            <p class="testi-detail">Proceso de autoconocimiento · 14 meses</p>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fu">
+        <p class="testi-quote">
+          "Llegué en un momento de transición laboral muy confuso. Javiera tiene una
+          capacidad especial para hacer preguntas que abren cosas sin que te sientas
+          invadido. Me fui con más claridad cada vez."
+        </p>
+        <div class="testi-attr">
+          <div class="testi-init">R.A.</div>
+          <div>
+            <p class="testi-name">R.A.</p>
+            <p class="testi-detail">Transición de carrera · 8 meses</p>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fu">
+        <p class="testi-quote">
+          "Siempre fui escéptica de la psicoterapia. Lo que me sorprendió fue cómo
+          el enfoque que usa conecta mente y cuerpo de una forma que tiene sentido.
+          No es solo hablar: es entender de otra manera."
+        </p>
+        <div class="testi-attr">
+          <div class="testi-init">M.F.</div>
+          <div>
+            <p class="testi-name">M.F.</p>
+            <p class="testi-detail">Trabajo con ansiedad · proceso activo</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ El espacio ═════════════════════════════════════════════ -->
+<section id="espacio">
+  <div style="max-width:var(--max);margin:0 auto;">
+    <div class="fu">
+      <p class="lbl">Donde nos encontramos</p>
+      <h2 style="font-family:var(--serif);font-size:clamp(2.8rem,4.5vw,5rem);font-weight:500;line-height:1.02;max-width:24ch;">
+        El espacio
+      </h2>
+      <p style="font-size:0.95rem;color:var(--gray);max-width:52ch;margin-top:0.75rem;">
+        Un lugar pensado para que puedas decir lo que no dices en otro lado.
+        También hay opción online para quienes están fuera de Santiago.
+      </p>
+    </div>
+    <div class="espacio-strip">
+      <!-- Place: 3 real photos of consultation room, warm lighting -->
+      <div class="ep ep-1 fu">
+        <div class="ep-bg"></div>
+        <span class="ep-label">Sala de consulta</span>
+      </div>
+      <div class="ep ep-2 fu">
+        <div class="ep-bg"></div>
+        <span class="ep-label">El ambiente</span>
+      </div>
+      <div class="ep ep-3 fu">
+        <div class="ep-bg"></div>
+        <span class="ep-label">Los detalles</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ Blog ══════════════════════════════════════════════════ -->
+<section id="blog">
+  <div style="max-width:var(--max);margin:0 auto;">
+    <div class="blog-top fu">
+      <div>
+        <p class="lbl">Psicoeducación</p>
+        <h2 class="blog-heading">Artículos desde<br>el trabajo clínico</h2>
+      </div>
+      <a href="#" class="btn-ol">Ver todos</a>
+    </div>
+    <div class="blog-grid">
+      <!-- PLACEHOLDER: replace with real articles -->
+      <a href="#" class="blog-card feat fu">
+        <div class="blog-img">
+          <div class="blog-bg bg1"></div>
+        </div>
+        <p class="blog-cat">Arte y Psique</p>
+        <h3 class="blog-title">Por qué el arte llega donde las palabras no alcanzan</h3>
+        <p class="blog-excerpt">
+          Hay experiencias que el lenguaje verbal simplemente no puede contener.
+          La imagen y el símbolo operan en un registro diferente del sistema nervioso.
+          Aquí exploro por qué integro el arte en el trabajo psicodinámico.
+        </p>
+        <span class="blog-date">Junio 2026</span>
+      </a>
+      <a href="#" class="blog-card fu">
+        <div class="blog-img">
+          <div class="blog-bg bg2"></div>
+        </div>
+        <p class="blog-cat">Neuropsicología</p>
+        <h3 class="blog-title">Qué le pasa al cerebro cuando repetimos los mismos patrones</h3>
+        <p class="blog-excerpt">
+          Los patrones no son debilidad de carácter. Son circuitos neurales que
+          aprendimos a activar mucho antes de tener palabras para describirlos.
+        </p>
+        <span class="blog-date">Mayo 2026</span>
+      </a>
+      <a href="#" class="blog-card fu">
+        <div class="blog-img">
+          <div class="blog-bg bg3"></div>
+        </div>
+        <p class="blog-cat">Psicodinámico</p>
+        <h3 class="blog-title">Lo que el inconsciente tiene que decir sobre tus elecciones</h3>
+        <p class="blog-excerpt">
+          El psicoanálisis no es arqueología del pasado. Es una forma de entender
+          por qué seguimos eligiendo lo que elegimos hoy.
+        </p>
+        <span class="blog-date">Abril 2026</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ CTA final ══════════════════════════════════════════════ -->
+<section id="cta-final">
+  <div style="max-width:var(--max);margin:0 auto;">
+    <p class="lbl lbl-tan fu" style="justify-content:center;">Primer paso</p>
+    <h2 class="cta-h fu">
+      El cambio empieza<br>con una <em>conversación</em>
+    </h2>
+    <p class="cta-sub fu">
+      La primera sesión es una instancia para conocernos y ver si este es el espacio
+      que necesitas. Sin compromisos previos.
+    </p>
+    <div class="fu">
+      <!-- Replace 56900000000 with real WhatsApp -->
+      <a href="https://wa.me/56900000000?text=Hola%20Javiera%2C%20me%20gustar%C3%ADa%20agendar%20una%20primera%20conversaci%C3%B3n"
+         target="_blank" rel="noopener" class="btn-w">
+        Agenda tu primera sesión
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ Footer ═════════════════════════════════════════════════ -->
+<footer id="footer">
+  <div style="max-width:var(--max);margin:0 auto;">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-brand">Javiera Vásquez</p>
+        <p class="footer-tag">
+          Psicóloga psicodinámica. Integrando neuropsicología y arte para
+          acompañar procesos de autoconocimiento y cambio en Santiago, Chile.
+        </p>
+        <div class="footer-contact">
+          <!-- Replace with real contact info -->
+          <p>Santiago, Chile</p>
+          <p>Presencial · Online</p>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-t">Navegar</p>
+        <ul class="footer-links">
+          <li><a href="#paratiSi">Para ti</a></li>
+          <li><a href="#diferenciador">Mi enfoque</a></li>
+          <li><a href="#testimonios">Experiencias</a></li>
+          <li><a href="#espacio">El espacio</a></li>
+          <li><a href="#blog">Artículos</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-t">Contacto</p>
+        <ul class="footer-links">
+          <!-- Replace 56900000000 with real number -->
+          <li><a href="https://wa.me/56900000000" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:hola@javieravasquez.cl">hola@javieravasquez.cl</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <span>© 2026 Javiera Vásquez · Psicóloga</span>
+      <span>Univ. Gabriela Mistral · Santiago</span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('s', scrollY > 50), { passive: true });
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.05, rootMargin: '0px 0px 120px 0px' });
+
+document.querySelectorAll('.fu').forEach(el => {
+  const r = el.getBoundingClientRect();
+  if (r.top < window.innerHeight && r.bottom > 0) {
+    el.classList.add('on');
+  } else {
+    io.observe(el);
+  }
+});
+</script>
+</body>
+</html>
